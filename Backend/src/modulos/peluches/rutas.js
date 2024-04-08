@@ -1,27 +1,21 @@
 //aca vamos a crear el CRUD del objeto peluche
 const express = require('express');
-const respuestas = require('../../red/respuestas')
 const router = express.Router();
-const Peluche = require('../../model/modPeluche');
+const peluchesController = require('./controller.js');
 
-//crear
-router.post('/',async (req, res) =>{
-    try {
-        const nuevoPeluche = await Peluche.create(req.body);
-        respuestas.success(req,res,nuevoPeluche,201);
+// Crear un nuevo peluche
+router.post('/', peluchesController.crearPeluche);
 
-    }catch (error){
-        respuestas.error(req,res,{message:'Error al crear peluche'},400);
-    }
-});
 // Obtener todos los peluches
-router.get('/', async (req, res) => {
-    try {
-        const peluches = await Peluche.find();
-        res.json(peluches);
-    } catch (error) {
-        respuestas.error(req,res,{message:'Error al traer peluches'},500)
-    }
-});
+router.get('/', peluchesController.obtenerPeluches);
+
+// Obtener un peluche por su ID
+router.get('/:id', peluchesController.obtenerPeluchePorId);
+
+// Actualizar un peluche por su ID
+router.put('/:id', peluchesController.actualizarPeluche);
+
+// Eliminar un peluche por su ID
+router.delete('/:id', peluchesController.eliminarPeluche);
 
 module.exports = router;
