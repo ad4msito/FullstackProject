@@ -1,6 +1,6 @@
 const express = require('express');
 const config = require('./config.js');
-const clientesRouter = require('./modulos/clientes/rutas');
+const usuariosRouter = require('./modulos/usuarios/rutas');
 const peluchesRouter = require('./modulos/peluches/rutas');
 const mongoose = require('mongoose');
 const app = express();
@@ -15,11 +15,13 @@ mongoose.connect(config.app.dbURI, {})
         console.error('Error al conectar a MongoDB Atlas:', err);
     });
 
-//configuracion:
+//configuraciones:
 app.set('port', config.app.port);
 app.set('dbURI', config.app.dbURI);
+
 //rutas:
-app.use('/api/clientes', clientesRouter);
+app.use('/api/usuarios', usuariosRouter);
 app.use('/api/peluches', peluchesRouter);
-//exportar el modulo
+
+//
 module.exports = app;
