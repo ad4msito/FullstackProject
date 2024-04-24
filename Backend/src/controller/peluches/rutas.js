@@ -13,7 +13,7 @@ router.get('/', peluchesController.obtenerPeluches);
 router.get('/:id', peluchesController.obtenerPeluchePorId);
 
 // Actualizar un peluche por su ID
-router.put('/:id', peluchesController.actualizarPeluche);
+router.put('/:_id', peluchesController.actualizarPeluche);
 
 // Eliminar un peluche por su ID
 router.delete('/:id', peluchesController.eliminarPeluche);

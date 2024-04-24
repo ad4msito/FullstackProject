@@ -1,12 +1,34 @@
 const Usuario = require('../../model/modUsuario');
-const respuesta = require('../../red/respuestas');
+const respuesta = require('../../redException/respuestas');
 
 exports.crearUsuario = async (req,res) => {
+    let {email,name,lastname,roles,password,peluchesID} = req.body;
     try {
-        const nuevoUsuario = await Usuario.create(req.body);
-        respuesta.success(req, res, nuevoUsuario, 201);
+        let verifMail = await Usuario.findOne({ email:email})
+        if (!verifMail) {
+            const cryptoPass = require('crypto')
+                .createHash('sha256')
+                .update(password)
+                .digest('hex');
+            console.log(cryptoPass);
+            const usr = new Usuario(
+                {
+                    name: name,
+                    lastname:lastname,
+                    email: email,
+                    roles: roles,
+                    isActive: true,
+                    password:cryptoPass,
+                    peluchesID:peluchesID
+                });
+            let user = await Usuario.create(usr);
+            respuesta.success(req, res, user, 201);
+        } else {
+            respuesta.error(req,res, 'Email invalido', 400)
+        }
     } catch (error){
-        respuesta.error(req,res,'Error al crear el usuario', 400);
+        console.log(error)
+        respuesta.error(req,res,'Error al crear el usuario', 500);
     }
 }
 exports.obtenerUsuarios = async (req,res)=>{
@@ -15,6 +37,18 @@ exports.obtenerUsuarios = async (req,res)=>{
         respuesta.success(req,res,usuarios,200);
     } catch (error){
         respuesta.error(req,res,{message:'Error al obtener peluches'}, 404);
+    }
+}
+exports.obtenerUsuariosPorEmail = async (email,req,res) => {
+    try {
+        const usuario = await Usuario.findOne({email:email});
+        if (!usuario) {
+            respuesta.error(req,res,{message:'Usuario no encontrado'}, 404);
+        } else {
+            return usuario.toObject();
+        }
+    } catch (error){
+        respuesta.error(req,res,{message:'Error al buscar usuario'}, 500);
     }
 }
 exports.obtenerUsuarioPorId = async (req,res) =>{
@@ -43,12 +77,8 @@ exports.actualizarUsuario = async (req, res) =>{
 }
 exports.eliminarUsuario = async (req, res) =>{
     try {
-        const usuarioEliminado = await Usuario.findByIdAndDelete(req.params.id);
-        if (!usuarioEliminad){
-            respuesta.error(req,res,{message:'Usuario no encontrado'}, 404);
-        } else {
-            respuesta.success(req,res,usuarioEliminado,200);
-        }
+        const usuarioEliminado = await Usuario.findByIdAndDelete(req.params._id);
+            respuesta.success(req,res,'Usuario eliminado.',200)
     } catch (error ) {
         respuesta.error(req,res,{message:'Error al eliminar usuario'}, 500);
     }

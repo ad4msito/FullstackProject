@@ -1,7 +1,8 @@
 const express = require('express');
 const config = require('./config.js');
-const usuariosRouter = require('./modulos/usuarios/rutas');
-const peluchesRouter = require('./modulos/peluches/rutas');
+const usuariosRouter = require('./controller/usuarios/rutas');
+const peluchesRouter = require('./controller/peluches/rutas');
+const authRouter = require('./controller/auth/rutas');
 const mongoose = require('mongoose');
 const app = express();
 app.use(express.json());
@@ -18,10 +19,11 @@ mongoose.connect(config.app.dbURI, {})
 //configuraciones:
 app.set('port', config.app.port);
 app.set('dbURI', config.app.dbURI);
-
+app.set('SECRET_KEY', config.app.SECRET_KEY);
 //rutas:
 app.use('/api/usuarios', usuariosRouter);
 app.use('/api/peluches', peluchesRouter);
+app.use('/api/login', authRouter);
 
 //
 module.exports = app;

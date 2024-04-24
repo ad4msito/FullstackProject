@@ -1,7 +1,8 @@
 // controllers/peluchesController.js
 const Peluche = require('../../model/modPeluche');
-const respuesta = require('../../red/respuestas');
-
+const respuesta = require('../../redException/respuestas');
+const mongoose = require('mongoose');
+const { ObjectId } = mongoose.Types;
 // Crear un nuevo peluche
 exports.crearPeluche = async (req, res) => {
     try {
@@ -38,13 +39,15 @@ exports.obtenerPeluchePorId = async (req, res) => {
 // Actualizar un peluche por su ID
 exports.actualizarPeluche = async (req, res) => {
     try {
-        const pelucheActualizado = await Peluche.findByIdAndUpdate(req.params.id, req.body, { new: true });
+        console.log(req.params._id);
+        const pelucheActualizado = await Peluche.findByIdAndUpdate(req.params._id, req.body, { new: true });
         if (!pelucheActualizado) {
             return respuesta.error(req, res, { message: 'Peluche no encontrado' }, 404);
         } else {
             respuesta.success(req, res, pelucheActualizado, 200);
         }
     } catch (error) {
+        console.log(error);
         respuesta.error(req, res, { message: 'Error al actualizar peluche' }, 500);
     }
 };
