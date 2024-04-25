@@ -65,3 +65,5 @@ exports.eliminarPeluche = async (req, res) => {
         respuesta.error(req, res, { message: 'Error al eliminar peluche' }, 500);
     }
 };
+
+

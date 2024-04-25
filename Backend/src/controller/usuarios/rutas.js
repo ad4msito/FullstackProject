@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const usuariosController = require('./controller.js');
-router.post('/', usuariosController.crearUsuario );
+router.post('/registrarse', usuariosController.crearUsuario );
 
 router.get('/',usuariosController.obtenerUsuarios);
 
