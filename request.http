@@ -1,0 +1,51 @@
+### GET ranking
+GET http://localhost:8080/api/public/rankingPeluches
+
+###para ver todos los peluches disponibles:
+GET http://localhost:8080/api/peluches/
+
+###para crear un usuario:
+POST http://localhost:8080/api/usuarios/registrarse
+Content-type:application/json
+
+{
+  "email": "example@mail.com",
+    "name": "example",
+    "lastname": "example",
+    "roles": "user",
+    "password": "example"
+}
+
+### para logearse: (DEVUELVE UN TOKEN PARA LOS ENDPOINTS)
+POST http://localhost:8080/api/auth/login
+Content-Type: application/json
+
+{
+    "email":"adam@mail.com",
+    "password":"ad4msito"
+}
+
+###ENDPOINTS PRIVADOS: (CON JWT) -- para elegir un peluche: RECORDAR ENVIAR EL JWTOKEN COMO BEARER TOKEN:
+POST http://localhost:8080/api/private/elegirPeluche
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2Mjg0NDYwY2FjNmM1NzE4MTBlMGQzMyIsImVtYWlsIjoiYWRhbUBtYWlsLmNvbSIsImlhdCI6MTcxNDA4MzY5MH0.zqWC9W_b0V3Gssd-VOBZG0VR9kTBpmdd6PAvDiiEkQg
+
+{
+    "tipo": "perro",
+    "color": "amarillo",
+    "accesorios": "camiseta y pelota de futbol"
+}
+
+###para ver peluches:
+GET http://localhost:8080/api/private/misPeluches
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2Mjg0NDYwY2FjNmM1NzE4MTBlMGQzMyIsImVtYWlsIjoiYWRhbUBtYWlsLmNvbSIsImlhdCI6MTcxNDA4MzY5MH0.zqWC9W_b0V3Gssd-VOBZG0VR9kTBpmdd6PAvDiiEkQg
+
+
+
+###para eliminar peluches:
+POST http://localhost:8080/api/private/eliminarPeluche
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2Mjg0NDYwY2FjNmM1NzE4MTBlMGQzMyIsImVtYWlsIjoiYWRhbUBtYWlsLmNvbSIsImlhdCI6MTcxNDA4MzY5MH0.zqWC9W_b0V3Gssd-VOBZG0VR9kTBpmdd6PAvDiiEkQg
+
+{
+    "pelucheId":"66295f459ab13fc151117783"
+}
