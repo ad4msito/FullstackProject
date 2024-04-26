@@ -2,7 +2,7 @@ Este proyecto universitario tiene como objetivo crear una solución Fullstack pa
 
 Funcionalidades del back-end en la primera entrega:
 -Crear una cuenta de usuario.
--Autenticar usuarios.
+-Autenticar usuarios (con Json Web Token).
 -Proporcionar endpoints públicos para ver información sobre los muñecos de peluche.
 -Proporcionar endpoints privados para acceder a funciones específicas (por ejemplo, elegir peluches).
 
