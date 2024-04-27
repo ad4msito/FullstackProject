@@ -1,6 +1,6 @@
 Este proyecto universitario tiene como objetivo crear una solución **Fullstack** para personalizar muñecos de peluche antes de su compra. La solución se divide en dos partes: **back-end** y **front-end**.
 
-## Funcionalidades del Back-End (Primera Entrega)
+## Funcionalidades del Back-End 
 
 - **Crear una Cuenta de Usuario**: Los usuarios pueden registrarse y crear una cuenta para acceder a las funcionalidades personalizadas.
 - **Autenticar Usuarios (con JSON Web Token)**: Implementamos autenticación segura para proteger las rutas privadas.
