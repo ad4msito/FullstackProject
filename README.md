@@ -93,5 +93,3 @@ Este proyecto universitario tiene como objetivo crear una solución **Fullstack*
       "pelucheId": "66295f459ab13fc151117783"
     }
     ```
-
-¡Espero que esta descripción te ayude a presentar tu proyecto de manera clara y concisa! 🌟
