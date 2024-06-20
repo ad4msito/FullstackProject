@@ -9,7 +9,13 @@ const app = express();
 //para los res json
 app.use(express.json());
 //para el intercambio backend y frontend
-app.use(cors())
+const corsOptions = {
+    origin: '*', // Permitir solicitudes solo desde este origen
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // Métodos permitidos
+    credentials: true, // Permitir el uso de credenciales
+    optionsSuccessStatus: 204 // Algunos navegadores antiguos fallan con 204
+};
+app.use(cors(corsOptions));
 //conexion con la base de datos
 mongoose.connect(config.app.dbURI, {})
     .then(() => {

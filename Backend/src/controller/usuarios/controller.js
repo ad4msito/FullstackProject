@@ -39,16 +39,16 @@ exports.obtenerUsuarios = async (req,res)=>{
         respuesta.error(req,res,{message:'Error al obtener peluches'}, 404);
     }
 }
-exports.obtenerUsuariosPorEmail = async (email,req,res) => {
+exports.obtenerUsuariosPorEmail = async (req,res) => {
     try {
-        const usuario = await Usuario.findOne({email:email});
+        const usuario = await Usuario.findOne({email:req.body.email});
         if (!usuario) {
             respuesta.error(req,res,{message:'Usuario no encontrado'}, 404);
         } else {
             return usuario.toObject();
         }
     } catch (error){
-        respuesta.error(req,res,{message:'Error al buscar usuario'}, 500);
+        res.status(500).json(error);
     }
 }
 exports.obtenerUsuarioPorId = async (req,res) =>{
