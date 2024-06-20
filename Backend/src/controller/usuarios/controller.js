@@ -2,7 +2,7 @@ const Usuario = require('../../model/modUsuario');
 const respuesta = require('../../redException/respuestas');
 
 exports.crearUsuario = async (req,res) => {
-    let {email,name,lastname,roles,password,peluchesID} = req.body;
+    let {email,name,lastname,roles,password,peluches} = req.body;
     try {
         let verifMail = await Usuario.findOne({ email:email})
         if (!verifMail) {
@@ -19,7 +19,7 @@ exports.crearUsuario = async (req,res) => {
                     roles: roles,
                     isActive: true,
                     password:cryptoPass,
-                    peluchesID:peluchesID
+                    peluches:peluches
                 });
             let user = await Usuario.create(usr);
             respuesta.success(req, res, user, 201);
@@ -77,7 +77,7 @@ exports.actualizarUsuario = async (req, res) =>{
 }
 exports.eliminarUsuario = async (req, res) =>{
     try {
-        const usuarioEliminado = await Usuario.findByIdAndDelete(req.params._id);
+        const usuarioEliminado = await Usuario.findByIdAndDelete(req.params.id);
             respuesta.success(req,res,'Usuario eliminado.',200)
     } catch (error ) {
         respuesta.error(req,res,{message:'Error al eliminar usuario'}, 500);

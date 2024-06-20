@@ -1,14 +1,15 @@
 const express = require('express');
 const config = require('./config.js');
+const cors = require('cors');
 const usuariosRouter = require('./controller/usuarios/rutas');
 const peluchesRouter = require('./controller/peluches/rutas');
 const authRouter = require('./controller/auth/rutas');
-const privateRouter = require('./controller/endpoints/private/rutas');
-const publicRouter = require('./controller/endpoints/public/controller');
 const mongoose = require('mongoose');
 const app = express();
+//para los res json
 app.use(express.json());
-
+//para el intercambio backend y frontend
+app.use(cors())
 //conexion con la base de datos
 mongoose.connect(config.app.dbURI, {})
     .then(() => {
@@ -17,17 +18,13 @@ mongoose.connect(config.app.dbURI, {})
     .catch((err) => {
         console.error('Error al conectar a MongoDB Atlas:', err);
     });
-
 //configuraciones:
 app.set('port', config.app.port);
 app.set('dbURI', config.app.dbURI);
 app.set('SECRET_KEY', config.app.SECRET_KEY);
 //rutas:
-app.use('/api/usuarios', usuariosRouter);
-app.use('/api/peluches', peluchesRouter);
-app.use('/api/auth', authRouter);
-app.use('/api/private', privateRouter);
-app.use('/api/public', publicRouter);
-
+app.use('/api/usuarios', cors(),usuariosRouter);
+app.use('/api/peluches', cors(), peluchesRouter);
+app.use('/api/auth', cors(), authRouter);
 //
 module.exports = app;

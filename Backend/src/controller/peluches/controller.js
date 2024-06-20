@@ -65,5 +65,21 @@ exports.eliminarPeluche = async (req, res) => {
         respuesta.error(req, res, { message: 'Error al eliminar peluche' }, 500);
     }
 };
+exports.obtenerRaking = async (req, res) => {
+    try{
+        const peluches = await Peluche.find()
+        peluchesFiltrados = []
+        peluches.forEach((peluche) =>{
+            if(peluche.vendidos > 0){
+                peluchesFiltrados.push(peluche);
+                console.log(peluche);
+            }
+        });
+        peluchesFiltrados.sort((a, b) => b - a);
+        res.json(peluchesFiltrados);
+    }catch(err){
+        res.status(500).json({error:"Error interno del servidor"});
+    }
+};
 
 

@@ -1,3 +1,4 @@
+const { Long } = require('mongodb');
 const mongoose = require('mongoose');
 
 const usuarioSchema = new mongoose.Schema({
@@ -7,8 +8,14 @@ const usuarioSchema = new mongoose.Schema({
     isActive:{type: Boolean, required:true, default: true},
     roles:{type: Array, required:true, default: ['user']},
     password:{type: String, required:true},
-    peluchesID:{type: Array, required:false}},
-{ timestamps: true } ).set('toJSON',{
+    peluches:[
+        {
+            id:{type:Number},
+            tipo:{type:String},
+            color:{type:String},
+            accesorios:{type:String}
+        }
+    ]}, { timestamps: true }).set('toJSON',{
     transform: (document, object) => {
         object.id = document.id;
         delete object._id;

@@ -5,7 +5,6 @@ const Usuario = require("../../controller/usuarios/controller");
 const respuestas =  require("../../redException/respuestas")
 const config = require("../../config");
 const {router} = require("express/lib/application");
-const exp = require("node:constants");
 exports.login = async (req, res) => {
     const user = await Usuario.obtenerUsuariosPorEmail(req.body.email, req, res);
     if(user==null){
