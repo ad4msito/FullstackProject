@@ -1,78 +1,95 @@
-Este proyecto universitario tiene como objetivo crear una solución Fullstack para personalizar muñecos de peluche antes de su compra. La solución se divide en dos partes: back-end y front-end.
+Este proyecto universitario tiene como objetivo crear una solución **Fullstack** para personalizar muñecos de peluche antes de su compra. La solución se divide en dos partes: **back-end** y **front-end**.
 
-Funcionalidades del back-end en la primera entrega:
--Crear una cuenta de usuario.
--Autenticar usuarios.
--Proporcionar endpoints públicos para ver información sobre los muñecos de peluche.
--Proporcionar endpoints privados para acceder a funciones específicas (por ejemplo, elegir peluches).
+## Funcionalidades del Back-End 
 
-Tecnologías Utilizadas 
--Lenguaje de Programación: JavaScript 
--Modelo de Tres Capas: El proyecto sigue una arquitectura de MVC (MODEL, VIEW, CONTROLLER)
--Base de Datos: MongoDB
+- **Crear una Cuenta de Usuario**: Los usuarios pueden registrarse y crear una cuenta para acceder a las funcionalidades personalizadas.
+- **Autenticar Usuarios (con JSON Web Token)**: Implementamos autenticación segura para proteger las rutas privadas.
+- **Endpoints Públicos**:
+  - Ver información sobre los muñecos de peluche disponibles.
+- **Endpoints Privados**:
+  - Acceder a funciones específicas, como elegir peluches personalizados.
 
+## Tecnologías Utilizadas
 
-INSTRUCCIONES DE USO:
-En SRC/CONTROLLER/PELUCHES/DBPELUCHES  esta la funcion para poblar la base de datos con todas las opciones de peluches para elegir. 
-Seguido de ella, una opcion para poder agregar una funcion que implementare a futuro la cual añade la cantidad de ventas por muñeco. 
-De momento, eso lo realizo recorriendo la base de datos para realizar el ranking. :)
-estas funciones se ejecutan en los endpoints:
-POST http://localhost:8080/api/peluches/llenar
-PUT http://localhost:8080/api/peluches/edit
+- **Lenguaje de Programación**: JavaScript
+- **Modelo de Tres Capas**: El proyecto sigue una arquitectura MVC (Modelo-Vista-Controlador).
+- **Base de Datos**: MongoDB
 
-///utilizacion de endpoints en un archivo .http/.rest con el ejemplo de un usuario y su token:
-### ENDPOINTS PUBLICOS:
+## Instrucciones de Uso
 
-### GET ranking
-GET http://localhost:8080/api/public/rankingPeluches
+1. **Poblar la Base de Datos**:
+   - En `SRC/CONTROLLER/PELUCHES/DBPELUCHES`, encontrarás la función para poblar la base de datos con todas las opciones de peluches disponibles.
+   - Además, hay una opción para agregar una función (para implementar a futuro) que registre la cantidad de ventas por muñeco.
+   - Por ahora, calculamos el ranking recorriendo la base de datos.
 
-### para ver todos los peluches disponibles:
-GET http://localhost:8080/api/peluches/
+2. **Endpoints**:
+   - Las funciones mencionadas se ejecutan en los endpoints del back-end.
+   - A continuación, se presentan ejemplos de cómo utilizar los endpoints:
 
-### para crear un usuario:
-POST http://localhost:8080/api/usuarios/registrarse
-Content-type:application/json
+### ENDPOINTS PÚBLICOS:
 
-{
-"email": "example@mail.com",
-"name": "example",
-"lastname": "example",
-"roles": "user",
-"password": "example"
-}
+- **Ver Ranking de Peluches Más Comprados**:
+  - `GET http://localhost:8080/api/public/rankingPeluches`
 
-### para logearse: (DEVUELVE UN TOKEN PARA LOS ENDPOINTS)
-POST http://localhost:8080/api/auth/login
-Content-Type: application/json
+- **Ver Todos los Peluches Disponibles**:
+  - `GET http://localhost:8080/api/peluches/`
 
-{
-"email":"adam@mail.com",
-"password":"ad4msito"
-}
+- **Crear un Usuario**:
+  - `POST http://localhost:8080/api/usuarios/registrarse`
+  - Cuerpo de la solicitud (Content-Type: application/json):
+    ```json
+    {
+      "email": "example@mail.com",
+      "name": "example",
+      "lastname": "example",
+      "roles": "user",
+      "password": "example"
+    }
+    ```
 
-### ENDPOINTS PRIVADOS: (recordar cambiar el jwt que va al lado de Authorization: Bearer) 
+- **Iniciar Sesión (Devuelve un Token para los Endpoints)**:
+  - `POST http://localhost:8080/api/auth/login`
+  - Cuerpo de la solicitud (Content-Type: application/json):
+    ```json
+    {
+      "email": "adam@mail.com",
+      "password": "ad4msito"
+    }
+    ```
 
-### para elegir un peluche: RECORDAR ENVIAR EL JWTOKEN COMO BEARER TOKEN:
-POST http://localhost:8080/api/private/elegirPeluche
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2Mjg0NDYwY2FjNmM1NzE4MTBlMGQzMyIsImVtYWlsIjoiYWRhbUBtYWlsLmNvbSIsImlhdCI6MTcxNDA4MzY5MH0.zqWC9W_b0V3Gssd-VOBZG0VR9kTBpmdd6PAvDiiEkQg
+### ENDPOINTS PRIVADOS (Recordar cambiar el JWT que va al lado de Authorization: Bearer):
 
-{
-"tipo": "perro",
-"color": "amarillo",
-"accesorios": "camiseta y pelota de futbol"
-}
+- **Elegir un Peluche (Enviar JWT como Bearer Token)**:
+  - `POST http://localhost:8080/api/private/elegirPeluche`
+  - Cabecera de la solicitud:
+    ```
+    Authorization: Bearer <tu_token_jwt>
+    ```
+  - Cuerpo de la solicitud (Content-Type: application/json):
+    ```json
+    {
+      "tipo": "perro",
+      "color": "amarillo",
+      "accesorios": "camiseta y pelota de fútbol"
+    }
+    ```
 
-### para ver peluches:
-GET http://localhost:8080/api/private/misPeluches
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2Mjg0NDYwY2FjNmM1NzE4MTBlMGQzMyIsImVtYWlsIjoiYWRhbUBtYWlsLmNvbSIsImlhdCI6MTcxNDA4MzY5MH0.zqWC9W_b0V3Gssd-VOBZG0VR9kTBpmdd6PAvDiiEkQg
+- **Ver Peluches del Usuario**:
+  - `GET http://localhost:8080/api/private/misPeluches`
+  - Cabecera de la solicitud:
+    ```
+    Authorization: Bearer <tu_token_jwt>
+    ```
 
-
-
-### para eliminar peluches:
-POST http://localhost:8080/api/private/eliminarPeluche
-Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2Mjg0NDYwY2FjNmM1NzE4MTBlMGQzMyIsImVtYWlsIjoiYWRhbUBtYWlsLmNvbSIsImlhdCI6MTcxNDA4MzY5MH0.zqWC9W_b0V3Gssd-VOBZG0VR9kTBpmdd6PAvDiiEkQg
-
-{
-"pelucheId":"66295f459ab13fc151117783"
-}
+- **Eliminar un Peluche**:
+  - `POST http://localhost:8080/api/private/eliminarPeluche`
+  - Cabecera de la solicitud (Content-Type: application/json):
+    ```
+    Authorization: Bearer <tu_token_jwt>
+    ```
+  - Cuerpo de la solicitud:
+    ```json
+    {
+      "pelucheId": "66295f459ab13fc151117783"
+    }
+    ```
