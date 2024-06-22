@@ -1,6 +1,77 @@
+body{
+    margin:0;
+    padding: 0;
+}
+.main {
+    background-color: rgb(143, 169, 152);
+    width: 1fr;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .login {
-    border: 3px solid black;
+    background-color: rgb(156, 190, 168);
+    width: 70vh;
+    height: 70vh;
+    box-sizing: border-box;
+    border: 1px solid rgba(93, 78, 109);
+    backdrop-filter: blur(6px);
+    border-radius: 2vh;
+    font-weight: bolder;
+    font-family: monospace;
+    transition: all 0.5s;
+    font-size: 3vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: rgb(93, 78, 109);
+}
+.login:hover{
+    border: 2px solid rgb(93, 78, 109);
+    border-color: rgb(93, 78, 109);
+    box-shadow: 0 0 0 5px rgba(93, 78, 109, 0.399);
+    color: rgb(93, 78, 109);
 }
 .login div {
-    margin: 1%;
+    margin: 5%;
 }
+.login button {
+    font-family: monospace;
+    background-color: #f3f7fe;
+    color: rgb(93, 78, 109);
+    border: 1px solid rgb(93, 78, 109);
+    border-radius: 1vh;
+    width: 20vh;
+    height: 5vh;
+    transition: .3s;
+    font-size: 3vh;
+}
+.login button:hover {
+    background-color: rgb(93, 78, 109);
+    box-shadow: 0 0 0 5px rgba(93, 78, 109, 0.399);
+    color: #fff;
+  }
+  .login input {
+    padding: 10px;
+    width: 30vh;
+    height: 5vh;
+    border: none;
+    outline: none;
+    border-radius: 1vh;
+    box-shadow: 0 1px  gray;
+    font-size: 2vh;
+    transition: width 0.3s;
+    font-family: monospace;
+  }
+  
+  .login input:focus {
+    outline: 1px solid rgb(93, 78, 109);
+    box-shadow: none;
+    width: 35vh;
+  }
+  
+  .login input::placeholder {
+    color: rgb(93, 78, 109);
+  }

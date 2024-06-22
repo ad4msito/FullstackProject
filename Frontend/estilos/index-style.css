@@ -1,25 +1,211 @@
 
-.ranking-container{
-    width: 100em;
-    height: 30vh;
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+.layout{
+    border: 0;
+    gap: 4px;
+    background-color: rgb(143, 169, 152);
+    grid-template-rows: 5% 30% 60% 5%;
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+    'header' 'main' 'footer';
+    height: 100vh;
+}
+@media (min-width:200px){
+    .layout {
+        display: grid;
+        grid-template-rows: 15% 40% 40% 5%;
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+        'header header header'
+        'main main main'
+        'main main main'
+        'footer footer footer';
+    }
+    
+}
+.header{
+    grid-area: header;
+    width: 100%;
+    background-color: rgb(93, 78, 109);    
+    box-shadow: 0px 0px 4px 0.1px gray;
+}
+.header h1{
+    font-size: 5vh;
+    color: #e1e1e1;
+    font-family: monospace;
+    text-align: center;
+    font-weight: 800;
+    cursor: pointer;
+    position: relative;
+    border: none;
+    background: none;
+    transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition-duration: 400ms;
+    transition-property: color;
+}
+.header h1:focus,
+.header h1:hover {
+  color: #fff;
+}
+
+.header h1:focus:after,
+.header h1:hover:after {
+  width:100%;
+  left: 0%;
+}
+.header h1::after{
+    content: "";
+    pointer-events: none;
+    bottom: -2px;
+    left: 50%;
+    position:absolute;
+    width: 0%;
+    height: 2px;
+    background-color: #ffffff56;
+    transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition-duration: 400ms;
+    transition-property: width, left;
+}
+/* Aqui va la div que contiene al ranking */
+.ranking{
+    height: 50%;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: aqua;
 }
-.ranking-array{
-    background-color: brown;
-    border: 1px solid black;
-    display: flex;
-    flex:0.6;
-    height:90%;
-    width: 100%;
-    flex-direction: row;
-
-}
-.ranking-item{
-    background-color: crimson;
-    width: 23.33%;
+/* Contiene los items del ranking */
+.list-container {
     height: 90%;
-    border: 1px solid black;
+    width: 100%;
+    border-radius: 1%;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
 }
+
+.item-container {
+    flex: 1;
+    height: auto;
+    display: flex;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+    min-height: 100%;
+}
+.item-container p {
+    font-size: 4vh;
+    font-family: monospace;
+}
+
+.ranking-item {
+    box-sizing: border-box;
+    width: 30vh;
+    height: 95%;
+    background: rgba(217, 217, 217, 0.58);
+    border: 1px solid rgba(93, 78, 109);
+    backdrop-filter: blur(6px);
+    border-radius: 1vh;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.5s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    font-weight: bolder;
+    color: rgb(93, 78, 109);
+}
+
+.ranking-item:hover {
+    /* 
+    height: 95%;
+    border: none;
+    box-shadow: 0px 0px 3px 0.1px gray; */
+    border: 2px solid rgb(93, 78, 109);
+    border-color: rgb(93, 78, 109);
+    box-shadow: 0 0 0 5px rgba(93, 78, 109, 0.399);
+    color: rgb(93, 78, 109);
+}
+.ranking-item:active{
+    transform: scale(0.95) rotateZ(1.7deg);
+}
+@media (max-width: 800px) {
+    .list-container {
+      flex-direction: column;
+      min-width: none;
+    }
+    .item-container {
+      width: 100%; 
+      height: 100%; 
+    }
+    .ranking-item {
+      width: 30vh; 
+      min-width: 0;
+      height: 100%; 
+    }
+    .buttons {
+        flex-direction: column;
+    }
+    .buttons button {
+        width: 100%;
+        margin:1%;
+    }
+  }
+.main{
+    grid-area: main;
+    display: flex;
+    background-color: rgb(143, 169, 152);
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+.main-container {
+    width: 80%;
+    background-color: rgb(156, 190, 168);
+    align-self: center;
+    height: 90%;
+    border-radius: 1%;
+    box-shadow: 0px 0px 5px 0.1px gray
+}
+.footer {
+    grid-area: footer;
+    width: 100%;
+    justify-content: center;
+    align-content: center;
+    background-color: rgb(143, 169, 152)
+}
+.buttons {
+    height: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: space-around;
+}
+.buttons button {
+    font-family: monospace;
+    background-color: #f3f7fe;
+    color: rgb(93, 78, 109);
+    border: 1px solid rgb(93, 78, 109);
+    border-radius: 1vh;
+    margin: 3%;
+    width: 25vh;
+    height: 8vh;
+    transition: .3s;
+    font-size: 3vh;
+}
+.buttons button:hover {
+    background-color: rgb(93, 78, 109);
+    box-shadow: 0 0 0 5px rgba(93, 78, 109, 0.399);
+    color: #fff;
+  }
+  
