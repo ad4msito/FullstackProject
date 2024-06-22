@@ -14,3 +14,9 @@ fetch('http://localhost:8079/api/peluches/ranking/1', {
         }})
     })
     
+    document.addEventListener("DOMContentLoaded", () => {
+        document.getElementsByClassName("login")[0].addEventListener("click", () => {
+            window.location.href = "./loginpage.html";  
+        });
+    });
+    

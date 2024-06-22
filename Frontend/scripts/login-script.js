@@ -23,6 +23,7 @@ formElements.addEventListener("submit", (event) => {
         if(result.accessToken){
             sessionStorage.setItem('authToken',result.accessToken);
             console.log('token guardado satisfactoriamente');
+            window.location.href = "./userpage.html";  
         }
     })
     .catch(error => {

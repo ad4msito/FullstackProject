@@ -10,8 +10,7 @@ html, body {
 .layout{
     border: 0;
     gap: 4px;
-    background-color: rgb(143, 169, 152);
-    grid-template-rows: 5% 30% 60% 5%;
+    grid-template-rows: 2% 60% 5%;
     grid-template-columns: 1fr;
     grid-template-areas: 
     'header' 'main' 'footer';
@@ -20,7 +19,7 @@ html, body {
 @media (min-width:200px){
     .layout {
         display: grid;
-        grid-template-rows: 15% 40% 40% 5%;
+        grid-template-rows: 10% 80% 5%;
         grid-template-columns: 1fr;
         grid-template-areas: 
         'header header header'
@@ -60,22 +59,10 @@ html, body {
   width:100%;
   left: 0%;
 }
-.header h1::after{
-    content: "";
-    pointer-events: none;
-    bottom: -2px;
-    left: 50%;
-    position:absolute;
-    width: 0%;
-    height: 2px;
-    background-color: #ffffff56;
-    transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
-    transition-duration: 400ms;
-    transition-property: width, left;
-}
+
 /* Aqui va la div que contiene al ranking */
 .ranking{
-    height: 50%;
+    height: 70%;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -106,22 +93,10 @@ html, body {
 }
 
 .ranking-item {
-    box-sizing: border-box;
-    width: 30vh;
-    height: 95%;
-    background: rgba(217, 217, 217, 0.58);
-    border: 1px solid rgba(93, 78, 109);
-    backdrop-filter: blur(6px);
-    border-radius: 1vh;
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.5s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    user-select: none;
-    font-weight: bolder;
-    color: rgb(93, 78, 109);
+    width: 30%;
+    height: 110%;
+    border: 0.1vh solid black;
+    transition: all 0.2s ease;
 }
 
 .ranking-item:hover {
@@ -162,7 +137,6 @@ html, body {
 .main{
     grid-area: main;
     display: flex;
-    background-color: rgb(143, 169, 152);
     justify-content: center;
     align-items: center;
     width: 100%;
@@ -170,21 +144,19 @@ html, body {
 }
 .main-container {
     width: 80%;
-    background-color: rgb(156, 190, 168);
     align-self: center;
     height: 90%;
     border-radius: 1%;
-    box-shadow: 0px 0px 5px 0.1px gray
+    box-shadow: 0px 0px 10px 0.1px gray
 }
 .footer {
     grid-area: footer;
     width: 100%;
     justify-content: center;
     align-content: center;
-    background-color: rgb(143, 169, 152)
 }
 .buttons {
-    height: 50%;
+    height: 30%;
     width: 100%;
     display: flex;
     justify-content: center;

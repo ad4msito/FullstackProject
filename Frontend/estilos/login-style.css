@@ -3,20 +3,33 @@ body{
     padding: 0;
 }
 .main {
-    background-color: rgb(143, 169, 152);
+  background-color: transparent;
+  background-image: radial-gradient(#000000 1px, #ffffff 1px);
+  background-size: 30px 30px;
     width: 1fr;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+@media (min-width:300px){
+  .login {
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+  }
+ .login button {
+    flex-direction: column;
+    margin: 3%;
+ } 
 }
 .login {
-    background-color: rgb(156, 190, 168);
     width: 70vh;
     height: 70vh;
     box-sizing: border-box;
-    border: 1px solid rgba(93, 78, 109);
     backdrop-filter: blur(6px);
+    background-color: white;
+    box-shadow: 1px 1px 10px 1px rgb(93, 78, 109);
     border-radius: 2vh;
     font-weight: bolder;
     font-family: monospace;
@@ -24,27 +37,33 @@ body{
     font-size: 3vh;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    align-items: space-between;
     color: rgb(93, 78, 109);
 }
 .login:hover{
-    border: 2px solid rgb(93, 78, 109);
     border-color: rgb(93, 78, 109);
-    box-shadow: 0 0 0 5px rgba(93, 78, 109, 0.399);
+    box-shadow: 0 0 15px 15px rgba(93, 78, 109, 0.399);
     color: rgb(93, 78, 109);
 }
 .login div {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
     margin: 5%;
+    align-items: center;
 }
+.login div label {
+  margin: 1%;
+}
+
 .login button {
     font-family: monospace;
     background-color: #f3f7fe;
     color: rgb(93, 78, 109);
     border: 1px solid rgb(93, 78, 109);
     border-radius: 1vh;
-    width: 20vh;
-    height: 5vh;
+    width: 21vh;
+    height: 7vh;
     transition: .3s;
     font-size: 3vh;
 }
@@ -54,7 +73,7 @@ body{
     color: #fff;
   }
   .login input {
-    padding: 10px;
+    padding: 2vh;
     width: 30vh;
     height: 5vh;
     border: none;
