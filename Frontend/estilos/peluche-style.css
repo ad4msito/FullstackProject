@@ -47,8 +47,9 @@ body{
     justify-self: right;
 }
 .header .navbarright {
-    justify-content: end;
-    margin: 3vh;
+    justify-content: center;
+    align-items: center;
+
 }
 .header .homepage:hover {
     height: 5vh;
@@ -56,7 +57,7 @@ body{
 
 }
 .header a {
-    font-size: 4vh;
+    font-size: 3vh;
     font-family: monospace;
     position: relative;
     color: rgb(228, 228, 228);
@@ -114,21 +115,23 @@ body{
     .main {
         align-items: center;
         justify-content: center;
+        margin: 0;
     }
     .header {
         justify-content: space-arround;
         align-items: start;
     }
-    .header .homepage{
-        justify-content: end;
-        justify-self: end;
+    .header .navbarright{
+        width: 50%;
+        justify-content: center;
+        justify-self: center;
     }
     .header .title {
+        width: 50%;
         align-items: start;
     }
     .header .navbarleft {
-        width: 10%;
-        height: 10%;
-
+        width:0% ;
+        height: 0%;
     }
 }
