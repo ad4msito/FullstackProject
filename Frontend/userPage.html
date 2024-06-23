@@ -5,13 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>usePage</title>
     <link rel="stylesheet" href="estilos/userPage-style.css">
+    <script src="./scripts/login-script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', ()=> {
+            checkAuth();
+        })
+    </script>
 </head>
 <body>
     <div class="layout">
         <div class="header">
-            <button class="logout">Cerrar Sesion</button>
-            <a href="" class="userProfile">Mi Perfil</a>
-            <a href="" class="ranking">Ranking de Peluches</a>
+            <div class="space">
+                <a href="./userPeluches.html" class="userProfile">Mis Peluches</a>
+            </div>
+                <div class="title"><h1>Pelushop</h1>
+            </div>
+            <div class="navbar">    
+                <button class="logout">Cerrar Sesion</button>
+            </div>
         </div>
         <div class="main">
             <div class="products-container">

@@ -8,7 +8,6 @@ formElements.addEventListener("submit", (event) => {
     email: document.querySelector('input[class="email"]').value,
     pass: document.querySelector('input[class="password"]').value
     }
-    console.log(data);
     fetch('http://localhost:8079/api/auth/login',{
         method:"POST",
         body: JSON.stringify(data),
@@ -31,3 +30,9 @@ formElements.addEventListener("submit", (event) => {
 
     })
 });
+function checkAuth(){
+    const token = sessionStorage.getItem('authToken');
+    if(!token){
+        window.location.href = './loginPage.html'
+    }
+}
