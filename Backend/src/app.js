@@ -1,4 +1,5 @@
 const express = require('express');
+require('dotenv').config();
 const config = require('./config.js');
 const cors = require('cors');
 const usuariosRouter = require('./controller/usuarios/rutas');
@@ -10,13 +11,14 @@ const app = express();
 app.use(express.json());
 //para el intercambio backend y frontend
 const corsOptions = {
-    origin: '*', // Permitir solicitudes solo desde este origen
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // Métodos permitidos
-    credentials: true, // Permitir el uso de credenciales
-    optionsSuccessStatus: 204 // Algunos navegadores antiguos fallan con 204
+    origin: '*', 
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', 
+    credentials: true, 
+    optionsSuccessStatus: 204 
 };
 app.use(cors(corsOptions));
 //conexion con la base de datos
+const uri = process.env.dbURI
 mongoose.connect(config.app.dbURI, {})
     .then(() => {
         console.log('Conexión exitosa a MongoDB Atlas');

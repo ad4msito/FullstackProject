@@ -72,10 +72,9 @@ exports.obtenerRaking = async (req, res) => {
         peluches.forEach((peluche) =>{
             if(peluche.vendidos > 0){
                 peluchesFiltrados.push(peluche);
-                console.log(peluche);
             }
         });
-        peluchesFiltrados.sort((a, b) => b - a);
+        peluchesFiltrados.sort((a, b) => b.vendidos - a.vendidos);
         res.json(peluchesFiltrados);
     }catch(err){
         res.status(500).json({error:"Error interno del servidor"});

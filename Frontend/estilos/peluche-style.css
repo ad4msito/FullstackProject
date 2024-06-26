@@ -67,7 +67,7 @@ body{
     color:white;
 }
 .header a:hover::before {
-    width: 120%; /* Ancho extendido */
+    width: 120%; 
 }
 .main {
     grid-area: "main";

@@ -1,5 +1,4 @@
 //aca ponemos las variables globales del sistema
-const {config} = require("dotenv");
 require('dotenv').config();
 module.exports = {
     app:{

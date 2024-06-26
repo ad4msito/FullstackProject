@@ -3,16 +3,25 @@ const Peluche = require('../../../model/modPeluche');
 
 exports.elegirPeluche = async (req,res) =>{
 try    {
-        let id = req.params.id;
+    console.log(req.body); // Verifica los datos recibidos
 
-        const findPel = await Peluche.findById(id);
+    const tipo = req.body.tipo;
+    const color = req.body.color;
+    const accesorios = req.body.accesorios;
+
+        const findPel = await Peluche.findOne({
+            tipo:tipo,
+            color:color,
+            accesorios:accesorios
+        });
+
         const usuario = await Usuario.findById(req.userId);
 
         if (!usuario) {
             return res.status(404).json({ message: 'Usuario no encontrado.' });
         }
         if (findPel) {
-            findPel.vendidos = (findPel.vendidos || 0) + 1; // Incrementa en 1 (o inicializa en 1 si es null)
+            findPel.vendidos = (findPel.vendidos || 0) + 1;
             await findPel.save();
         }
 
@@ -23,38 +32,30 @@ try    {
         catch(err){
             res.status(500).json({ message: 'Error interno del servidor' });
         }
-    }
+     }
 
-exports.eliminarPeluche = async (req, res) =>{
-  try {
-    const pelucheId = req.params.id;
-    const usuario = await Usuario.findById(req.userId);
+     exports.eliminarPeluche = async (req, res) =>{
+        try {
+          const pelucheId = req.params.id;
+          const usuario = await Usuario.findById(req.userId);
+      
+          if (!usuario) {
+              return res.status(404).json({ message: 'Usuario no encontrado.' });
+          }
+          const peluches = usuario.peluches;
+          console.log(peluches)
+          const index = peluches.findIndex((peluche) => peluche._id.toString() === pelucheId);
 
-    if (!usuario) {
-        return res.status(404).json({ message: 'Usuario no encontrado.' });
-    }
-
-    const peluches = usuario.peluches;
-    let pelucheEncontrado = false;
-
-    peluches.forEach((peluche, index) => {
-        if (peluche._id.toString() === pelucheId) {
-            peluches.splice(index, 1); // Elimina el peluche del array
-            pelucheEncontrado = true;
+        if (index !== -1) {
+            peluches.splice(index, 1);
         }
-    });
-
-    if (pelucheEncontrado) {
-        await usuario.save();
-        res.json({ message: 'Peluche eliminado con éxito.', usuario: usuario });
-    } else {
-        res.status(404).json({ message: 'Peluche no encontrado.' });
+        await usuario.save()
+          res.json(peluches)
+        }catch(err){
+            console.log(err)
+            res.status(500).json({error:'error interno del servidor', err})
+        }
     }
-} catch (err) {
-    res.status(500).json({ message: 'Error interno del servidor' });
-}
-};
-
 exports.verPeluches = async (req, res) => {
     try 
     {const usuario = await Usuario.findById(req.userId);

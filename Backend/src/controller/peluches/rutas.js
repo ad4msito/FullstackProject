@@ -12,7 +12,7 @@ const authenticateToken = require('../../controller/middleware/controller.js')
 // Obtener todos los peluchess
 router.get('/', peluchesController.obtenerPeluches);
 //Usuario eligiendo peluche
-router.put('/:id',authenticateToken, privateController.elegirPeluche);
+router.put('/crear',authenticateToken, privateController.elegirPeluche);
 // Obtener un peluche por su ID
 router.get('/:id', peluchesController.obtenerPeluchePorId);
 //obtener ranking de peluches
