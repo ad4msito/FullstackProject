@@ -132,7 +132,7 @@ body{
 
 }
 .products-item img {
-    width: 100%;
+    width: 30vh;
     height: auto;
 }
 
@@ -190,9 +190,5 @@ body{
     .products-item img {
         height: 70%;
         width: 90%;
-    }
-    .products-item img {
-        height: 1vh;
-        width: 1vh;
     }
 }

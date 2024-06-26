@@ -10,7 +10,7 @@ fetch('http://localhost:8079/api/peluches/ranking/1', {
     const rankingItems = document.querySelectorAll('.ranking-item');
     data.slice(0, 3).forEach((peluche, index) => {
         if (rankingItems[index]) {
-            rankingItems[index].innerText = `tipo: ${peluche.tipo}\ncolor: '${peluche.color}'\naccesorio: '${peluche.accesorios}'\nventas:'${peluche.vendidos}'`;        
+            rankingItems[index].innerHTML = `<img src="../img/${peluche.tipo}-${peluche.color}.png">`        
         }})
     })
     
@@ -18,5 +18,8 @@ fetch('http://localhost:8079/api/peluches/ranking/1', {
         document.getElementsByClassName("login")[0].addEventListener("click", () => {
             window.location.href = "./loginpage.html";  
         });
+        document.getElementsByClassName('register')[0].addEventListener('click',() => {
+            window.location.href = './singup.html'
+        })
     });
     

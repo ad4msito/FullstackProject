@@ -1,0 +1,94 @@
+body{
+    margin:0;
+    padding: 0;
+}
+.main {
+  background-color:  rgb(93, 78, 109);
+    width: 1fr;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+@media (min-width:300px){
+  .login {
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+  }
+ .login button {
+    flex-direction: column;
+    margin: 3%;
+ } 
+}
+.singup {
+    width: 70vh;
+    height: 90vh;
+    box-sizing: border-box;
+    backdrop-filter: blur(6px);
+    background-color: white;
+    box-shadow: 1px 1px 10px 1px rgb(93, 78, 109);
+    border-radius: 2vh;
+    font-weight: bolder;
+    font-family: monospace;
+    transition: all 0.5s;
+    font-size: 3vh;
+    display: flex;
+    flex-direction: column;
+    align-items: space-between;
+    color: rgb(93, 78, 109);
+}
+.singup:hover{
+    border-color: rgb(93, 78, 109);
+    box-shadow: 0 0 15px 15px rgba(56, 46, 68, 0.399);
+    color: rgb(93, 78, 109);
+}
+.singup div {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    margin: 5%;
+    align-items: center;
+}
+.singup div label {
+  margin: 1%;
+}
+
+.singup button {
+    font-family: monospace;
+    background-color: #f3f7fe;
+    color: rgb(93, 78, 109);
+    border: 1px solid rgb(93, 78, 109);
+    border-radius: 1vh;
+    width: 21vh;
+    height: 7vh;
+    transition: .3s;
+    font-size: 3vh;
+}
+.singup button:hover {
+    background-color: rgb(93, 78, 109);
+    box-shadow: 0 0 0 5px rgba(93, 78, 109, 0.399);
+    color: #fff;
+  }
+  .singup input {
+    padding: 2vh;
+    width: 30vh;
+    height: 5vh;
+    border: none;
+    outline: none;
+    border-radius: 1vh;
+    box-shadow: 0 0.3vh rgb(93, 78, 109);
+    font-size: 2vh;
+    transition: width 0.3s;
+    font-family: monospace;
+  }
+  
+  .singup input:focus {
+    outline: 1px solid rgb(93, 78, 109);
+    box-shadow: none;
+    width: 35vh;
+  }
+  
+  .singup input::placeholder {
+    color: rgb(93, 78, 109);
+  }

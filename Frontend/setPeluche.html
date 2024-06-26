@@ -27,26 +27,37 @@
             </div>
             <div class="options">
                 <div class="option-1">
+                    <p>¡Personaliza tu peluche!</p>
                 </div>
                 <div class="option-2">
                     <p>Seleccionar color:</p>
-                    <div class="highlight-palette">
-                        <span class="amarillo"></span>
-                        <span class="verde"></span>
-                        <span class="rosa"></span>
+                    <div class="paleta">
+                        <span class="amarillo" data-color="amarillo" data-seleccionado="false"></span>
+                        <span class="verde" data-color="verde" data-seleccionado="false"></span>
+                        <span class="rosa"  data-color="rosa" data-seleccionado="false"></span>
                     </div>  
                 </div>
                 <div class="option-3">
                     <p>Seleccionar accesorio:</p>
                     <div class="accesorios">
-                        <img src="../img/guitarra electrica.png">
-                        <img src="../img/notebook.png">
-                        <img src="../img/camiseta y pelota de futbol.png">
+                        <img src="../img/guitarra eléctrica.png" data-accs="guitarra eléctrica" data-seleccionado="false">
+                        <img src="../img/notebook.png" data-accs="notebook" data-seleccionado="false">
+                        <img src="../img/camiseta y pelota de futbol.png" data-accs="camiseta y pelota de futbol" data-seleccionado="false">
                     </div>
                 </div>
                 <div class="option-4">
                     <button class="create">Crear peluche</button>
                 </div>
+            </div>
+        </div>
+        <div class="popup" id="popup">
+            <div class="contenedor">
+                <h2>Datos del peluche seleccionado:</h2>
+                <p>Tipo: <span id="tipo"></span></p>
+                <p>Color: <span id="color"></span></p>
+                <p>Accesorios: <span id="accesorios"></span></p>
+                <button class="confirmar">Confirmar</button>
+                <button class="cerrar">Cerrar</button>
             </div>
         </div>
     </div>

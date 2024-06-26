@@ -7,4 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
         window.location.href = `setPeluche.html?id=${productId}`;
       });
     });
+    document.querySelector('.logout').addEventListener('click', ()=>{
+      sessionStorage.removeItem('authToken');
+      window.location.href = 'index.html'
+    })
   });

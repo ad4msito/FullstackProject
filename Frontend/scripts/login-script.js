@@ -19,16 +19,18 @@ formElements.addEventListener("submit", (event) => {
     })
     .then(response => response.json())
     .then(result => {
+        try {
         if(result.accessToken){
             sessionStorage.setItem('authToken',result.accessToken);
             console.log('token guardado satisfactoriamente');
             window.location.href = "./userpage.html";  
         }
+        }catch(error){
+            alert("datos invalidos", error)
+        }
     })
-    .catch(error => {
-        console.log("error al realizar la solicitud", error)
 
-    })
+
 });
 function checkAuth(){
     const token = sessionStorage.getItem('authToken');

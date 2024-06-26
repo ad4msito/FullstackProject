@@ -112,7 +112,12 @@ body{
     box-shadow: 0 0 vh 0 rgb(93, 78, 109);
 }
 .option-1 {
-    height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 25%;
+    font-size: 6vh;
+    font-family: monospace;
 }
 .option-2 {
     display: flex;
@@ -122,45 +127,55 @@ body{
     font-size: 3vh;
     justify-content: center;
     align-items: center;
+    height: 25%;
 }
-.highlight-palette .amarillo {
-    background-color:yellow; border-color: black;
-  }
-  
-  .highlight-palette .verde {
-    background-color: green; border-color: black;
-  }
-  
-  .highlight-palette .rosa {
-    background-color: pink; border-color: black;
-  }
-  .highlight-palette span {
-    display: inline-block;
-    margin: 0 0.15em;
-    background-color: #eee;
-    width: 10vh;
-    height: 10vh;
-    border: 1px solid black;
-    border-radius: 4px;
-    cursor: pointer;
-    box-shadow: 0 1px 2px #ccc;
-  }
-  .highlight-palette span:hover{
-    box-shadow: 0 0 0.5vh 0 rgb(93, 78, 109);
-  }
-  .highlight-palette {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .option-3 {
+.option-3 {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     font-size:3vh;
     font-family: monospace;
+    height: 25%;
   }
+  .option-4 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 25%;
+  }
+.paleta .amarillo {
+    background-color:yellow; border-color: black;
+  }
+  
+  .paleta .verde {
+    background-color: green; border-color: black;
+  }
+  
+  .paleta .rosa {
+    background-color: pink; border-color: black;
+  }
+  .paleta span {
+    display: inline-block;
+    margin: 1vh;
+    background-color: #eee;
+    width: 10vh;
+    height: 10vh;
+    border: 1px solid black;
+    border-radius: 1vh;
+    cursor: pointer;
+    box-shadow: 0 1px 2px #ccc;
+  }
+  .paleta span:hover{
+    box-shadow: 0 0 0.5vh 0 rgb(93, 78, 109);
+  }
+  .paleta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   .accesorios {
     display: flex;
     flex-direction: row;
@@ -176,5 +191,107 @@ body{
     width: 10vh;
     height: 10vh;
     border: 0.2vh solid black;
+    border-radius: 1vh;
     margin: 1vh;
+    cursor: pointer;
   }
+  .accesorios img:hover{
+    box-shadow: 0 0 0.5vh 0 rgb(93, 78, 109);
+  }
+   button {
+    font-family: monospace;
+    background-color: #f3f7fe;
+    color: rgb(93, 78, 109);
+    border: 1px solid rgb(93, 78, 109);
+    border-radius: 1vh;
+    margin: 3%;
+    width: 25vh;
+    height: 8vh;
+    transition: .3s;
+    font-size: 3vh;
+}
+ button:hover {
+    background-color: rgb(93, 78, 109);
+    box-shadow: 0 0 0 5px rgba(93, 78, 109, 0.399);
+    color: #fff;
+  }
+
+p {
+    margin: 0;
+    color: rgb(93, 78, 109);
+}
+.true {
+    border: 1vh solid rgb(93, 78, 109);
+}
+.popup {
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+    z-index: 9999; 
+}
+.popup div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 2vh;
+    background-color: white;
+    margin-top: 10%;
+    margin-left:40% ;
+    width: 50vh;
+    height: 50vh;
+}
+.paleta span[data-seleccionado="true"] {
+    border: 0.5vh solid rgb(93, 78, 109); 
+}
+
+.accesorios img[data-seleccionado="true"] {
+    border: 0.5vh solid rgb(93, 78, 109); 
+}
+@media (max-width:600px) {
+    .main {
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+    }
+    .main h1 {
+        font-size: 3vh;
+        text-align: center;
+        padding-bottom: 0;
+    }
+    .header {
+        justify-content: space-arround;
+        align-items: start;
+    }
+    .container {
+        flex-direction: column;
+        height: auto;
+    }
+    .photo-container {
+        width: 100%;
+        height: 50%;
+    }
+    .options {
+        width: 100%;
+        height: 50%;
+    }
+    .option-1 p {
+        font-size: 3vh;
+        text-align: center;
+    }
+    .option-2 p {
+        font-size: 3vh;
+        text-align: center;
+    }
+    .popup {
+        height: 100vh;
+    }
+    .popup div {
+        margin-top: 50%;
+        margin-left: 0%;
+        width: 46.5vh;
+    }
+}
