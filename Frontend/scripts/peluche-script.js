@@ -16,15 +16,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 const div = document.createElement('div');
                 div.classList.add('peluche-box');
                 div.innerHTML =
-                `<div class="photo-item"></div>
+                `<div class="photo-item">
+                    <img src="../img/${peluche.tipo}-${peluche.color}.png" >
+                </div>
                 <div class="peluche-item">
-                <p>tipo:${peluche.tipo}</p>
-                <p>color:${peluche.color}</p>
-                <p>${peluche.accesorios}</p>
+                    <div class="pelu-info">   
+                        <p>Accesorio:</p>
+                    </div>
+                    <img src="../img/${peluche.accesorios}.png">
                 </div>
                 `;
-            
                 container.appendChild(div);
+                
             }
         });
 });

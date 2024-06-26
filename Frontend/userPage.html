@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>usePage</title>
+    <title>Home page</title>
     <link rel="stylesheet" href="estilos/userPage-style.css">
     <script src="./scripts/login-script.js"></script>
     <script>
@@ -11,6 +11,7 @@
             checkAuth();
         })
     </script>
+    <script src="./scripts/userPage-script.js"></script>
 </head>
 <body>
     <div class="layout">
@@ -25,13 +26,24 @@
             </div>
         </div>
         <div class="main">
+            <h1>Elige un peluche para personalizar</h1>
             <div class="products-container">
 
-                    <div class="products-item">perro</div>
-                    <div class="products-item">conejo</div>
-                    <div class="products-item">oso</div>
-                    <div class="products-item">mapache</div>
-                    <div class="products-item">gato</div>
+                    <div class="products-item" data-product-id="1">
+                        <img src="../img/perro-verde.png">
+                    </div>
+                    <div class="products-item" data-product-id="2">
+                        <img src="../img/oso-rosa.png">
+                    </div>
+                    <div class="products-item" data-product-id="3">
+                        <img src="../img/mapache-amarillo.png">
+                    </div>
+                    <div class="products-item" data-product-id="4">
+                        <img src="../img/gato-verde.png">
+                    </div>
+                    <div class="products-item" data-product-id="5">
+                        <img src="../img/conejo-rosa.png">
+                    </div>
                 
             </div>
         </div>

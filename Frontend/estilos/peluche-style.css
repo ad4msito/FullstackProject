@@ -89,14 +89,31 @@ body{
     height: 20vh;
     transition: all 0.2s ease;
     font-size: 2vh;
+    font-family: monospace;
+    color: rgb(93, 78, 109);
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.peluche-item img {
+    width: 12vh;
+    height: 11vh;
+    border-radius: 2vh;
+    box-shadow: 0 0 0.5vh 0.1vh rgb(93, 78, 109);
+
 }
 .photo-item {
     margin-top: 0.6vh;
     width: 28vh;
     height: 30vh;
-    border: 0.1vh solid rgb(93, 78, 109);
+    border-radius: 3vh;
     transition: all 0.2s ease;
     font-size: 2vh;
+}
+.photo-item img {
+    width: 100%;
+    height: 100%;
 }
 .peluche-box {
     width: 30vh;
@@ -104,7 +121,8 @@ body{
     display: flex;
     align-items: center;
     flex-direction: column;
-    border: 0.1vh solid rgb(93, 78, 109);
+    box-shadow: 0 0 0.6vh 0 rgb(93, 78, 109);
+    border-radius: 3vh;
     transition: all 0.2s ease;
     font-size: 5vh;
 }
